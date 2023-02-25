@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-devices-width"/>
+    <title>2048</title>
+    <link rel="stylesheet" href="2048.css"/>
+    <script src="2048.js"></script>
+</head>
+<body onload="initialize()">
+    <div class="grid-title">
+        <div id="title">
+            <h1>2048!</h1>
+        </div>
+        <div id="score">
+            <h3></h3>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid-box">
+            <div class="grid-row">
+                <div class="grid-cell">
+                    <div class="grid-text">1</div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text">3</div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text">4</div>
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text">2</div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+                <div class="grid-cell">
+                    <div class="grid-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="initialize()">Restart</button>
+</body>

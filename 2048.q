@@ -1,46 +1,40 @@
 // 2048 the game written by James Betz
 
+// random seed
+system"S ",string "i"$.z.T
 
 // initialization
-lineboard:16#0;
-board:{4 cut lineboard};
+SIZE:4;
+lineboard:(SIZE*SIZE)#0;
+prevboard:(SIZE*SIZE)#0;
+board::SIZE cut lineboard
 
 // random number generation
-gen:{[x] @[`lineboard;x?where lineboard=0;:;twoOrFour[x]]}
-twoOrFour:{[x] x?2 2 2 2 2 2 2 2 2 4}
+gen:{@[`lineboard;neg[x]?where lineboard=0;:;twoOrFour[x]]}
+twoOrFour:{x?4,9#2}  / 90% chance of 2
 
 // partial movement components
-slide:{4#,[;4#0] x where not x=0};
-collapse:{[x] 
-	$[not null i:first where ({all (x=y;not x=0)}':)x;
-	  [
-		x:@[x;i;2*];
-		x:@[x;i-1;:;0];
-		.z.s x
-	  ];
-		:x
-	]
-	};
+slide:{SIZE#,[;SIZE#0] x where not x=0}
+collapse:{7h$x*1_({(2*x<>2)*(y+1)%2}\) 0b,x=next x}
 
 // general movement logic
-move:{@[`lineboard;x;:;slide collapse slide lineboard[x]]};
+m:{@[`lineboard;x;:;slide collapse slide lineboard[x]]};
+move:{l:lineboard;(m')indx x;if[not l~lineboard;prevboard::l;gen 1;check[]];board}
 
 // directional indexes
-ui:*[4;til 4] +/: til 4;
-di:*[4;desc til 4] +/: til 4;
-li:til[4] +/: 4*til 4;
-ri:desc[til 4] +/: 4*til 4;
+ui::*[SIZE;til SIZE] +/: til SIZE
+di::*[SIZE;desc til SIZE] +/: til SIZE
+li::til[SIZE] +/: SIZE*til SIZE
+ri::desc[til SIZE] +/: SIZE*til SIZE
 
-// directional moves
-u:{move each ui;gen 1;check[];board[]}
-d:{move each di;gen 1;check[];board[]}
-l:{move each li;gen 1;check[];board[]}
-r:{move each ri;gen 1;check[];board[]}
+// directional index dictionary
+indx::`up`down`left`right!(ui;di;li;ri)
 
 // end game
-check:{$[win[lineboard];show "Congrats you win!";lose[lineboard];show "You lost";(::)]}
-win:{any x=2048}
-lose:{$[any x=0;0b;all {all x=collapse x}each x[ui,di,li,ri]]}
+undo:{lineboard::prevboard;board}
+check:{$[any 2048=lineboard;show "Congrats you win!"; lose[lineboard];show "You lost";(::)]}
+lose:{$[any x=0;0b;c~(collapse') c:x[ui,di,li,ri]]}
 
 // start game
-gen 2;show board[]
+init:{lineboard::(SIZE*SIZE)#0;gen 2;show board}
+init[]

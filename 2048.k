@@ -13,29 +13,25 @@
 // ."\\S ",*."\\date +%s"
 
 // initialize table
-sz:4;lb:pb:(sz*sz)#0                            // 20char
-b::(sz*!sz)_lb                                  // 14char
-i::(+|:)\b                                      // 10char
+n:4;l:(n*n)#0                                           // 13char
+b::(n*!n)_l                                             // 11char
+i::(+|:)\b                                              // 10char
 
 // random number generation
-g:{@[`lb;(-x)?&lb=0;:;x?4,9#2]}                 // 31char
+g:{@[`l;(-x)?&l=0;:;x?4,9#2]}                           // 29char
 
 // partial movement components
-s:{sz#(x@&~x=0),sz#0}                           // 21char
-c:{7h$x*0{(2*~x=2)*(y+1)%2}\x=1_x,0N}           // 37char
+s:{n#(x@&~x=0),n#0}                                     // 19char
+c:{7h$x*0{(2*~x=2)*(y+1)%2}\x=1_x,0N}                   // 37char
 
 // general movement logic
-m:{@[`lb;x;:;s c s x]}                          // 22char
-m:{lb::,/*|x(+|:')\(s c s@)'i x}                // 32char
-mv:{l:lb;m x;if[~l~lb;pb::l;g 1;ck[]];b}        // 40char
+m:{L:l;l::,/*|x(+|:')\(s c s@)'i x;if[~L~l;g 1;k`];b}   // 53char
 
 // end game - definitely needs refactor
-u:{lb::pb;b}                                    // 12char
-ck:{exit@$[|/2048=lb;0;l lb;1;:1]}              // 34char
-l:{$[&/x=0;0b;&//~=':'i]}                       // 25char
+k:{exit@$[|/2048=l;0;(&/l>0)&&//~=':'i;1;:1]}           // 45char
 
 // start game 
-g 2;b                                           // 5char
+g 2;b                                                   // 5char
 
-/-------------------------------------------------------
-                                                // 303char
+/-----------------------------------------------------------------
+                                                        // 222char

@@ -25,7 +25,7 @@
 // initialize table
 l:16#0                                                  // 6char
 b::(4*!4)_l                                             // 11char
-i::4(+|:)\b                                             // 11char
+i::3(+|:)\b                                             // 11char
 
 // random number generation
 g:{@[`l;(-x)?&l=0;:;x?4,9#2]}                           // 29char

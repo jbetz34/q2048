@@ -10,32 +10,31 @@ The game is won when a tile with a value of 2048 appears on the board. Players c
 
 ### Game Functions
 - board[]
-	- Does not need an input
 	- Will display the current board
 
+- undo[]
+        - Reverts board to previous state
+        - Only works once
+
 - u[]
-	- Does not need an input
 	- Will move all current board tiles *up*
 	- Will generate another tile
 	- Will check to see if the game is won or lost
 	- Will display the new baord 
 
 - d[]
-	- Does not need an input
 	- Will move all current board tiles *down*
 	- Will generate another tile
 	- Will check to see if the game is won or lost
 	- Will display the new baord 
 
 - l[]
-	- Does not need an input
 	- Will move all current board tiles *left*
 	- Will generate another tile
 	- Will check to see if the game is won or lost
 	- Will display the new baord 
 
 - r[]
-	- Does not need an input
 	- Will move all current board tiles *right*
 	- Will generate another tile
 	- Will check to see if the game is won or lost
